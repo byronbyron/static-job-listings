@@ -1,34 +1,43 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import JobCard from './components/JobCard';
+import Job from './components/Job';
 import FilterItem from './components/FilterItem';
-import ListingsData from './data/data.json';
+import data from './data/data.json';
 
 export default function App() {
   const [listings, setListings] = useState([]);
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
-    if(filters.length == 0)
-      setListings(ListingsData)
-  }, [filters]);
+    setListings(data)
+  }, []);
 
-  const filterListings = (filter_by = '') => {
-    if (!filters.includes(filter_by) && filter_by !== '') {
-      setFilters([...filters, filter_by]);
+  const filterFunc = ({role, level, languages, tools}) => {
+    if (filters.length === 0) return true;
 
-      setListings(listings.filter(listing => [
-        listing.role,
-        listing.level,
-        ...listing.languages,
-        ...listing.tools
-      ].includes(filter_by)));
-    }
+    const tags = [role, level];
+
+    if (tools) tags.push(...tools);
+    if (languages) tags.push(...languages);
+    
+    return filters.every(tag => tags.includes(tag));
   }
 
-  const removeFilter = (removed_filter) => {
-    setFilters(filters.filter(item => item !== removed_filter))
+  const filterListings = (tag) => {
+    if (filters.includes(tag)) return;
+
+    setFilters([...filters, tag]);
   }
+
+  const removeFromFilter = (itemToRemove) => {
+    setFilters(filters.filter((item) => item !== itemToRemove));
+  }
+
+  const clearAll = () => {
+    setFilters([]);
+  }
+
+  const filteredJobs = listings.filter(filterFunc);
 
   return (
     <div>
@@ -37,12 +46,16 @@ export default function App() {
       <main className="container mx-auto px-6">
         {filters.length > 0 && (
           <div className="filter">
-            {filters.map(filter => <FilterItem item={filter} _callback={removeFilter} key={filter} />)}
+            <div className="flex-1 mr-auto">
+              {filters.map(filter => <FilterItem item={filter} _callback={removeFromFilter} key={filter} />)}
+            </div>
+
+            <button className="filter-clear" onClick={() => clearAll()}>Clear</button>
           </div>
         )}
 
         <div className="card-group">
-          { listings.map( listing => <JobCard listing={listing} key={listing.id} filtering={filterListings} /> ) }
+          { filteredJobs.map( listing => <Job listing={listing} key={listing.id} filtering={filterListings} /> ) }
         </div>
       </main>
     </div>

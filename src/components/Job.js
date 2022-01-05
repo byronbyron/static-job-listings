@@ -2,7 +2,7 @@ import React from 'react'
 import Details from './Details'
 import Image from './Image'
 
-export default function JobCard({listing, filtering}) {
+export default function Job({listing, filtering}) {
   return (
     <div className={`card ${listing.featured ? 'card-featured' : ''}`}>
       <Image url={listing.logo} desc={listing.company} />
