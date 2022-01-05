@@ -7,9 +7,6 @@
 *,
 ::after,
 ::before {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -28,8 +25,7 @@ body {
 }
 
 .container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  @apply px-6;
 }
 
 .filter {
@@ -141,8 +137,8 @@ body {
 
 .filter-tag {
   @apply rounded-tr-none rounded-br-none;
-  padding-right: 2.5rem;
-  position: relative;
+  @apply pr-10;
+  @apply relative;
 }
 
 .filter-tag:hover,
