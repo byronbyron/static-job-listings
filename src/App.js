@@ -16,7 +16,12 @@ export default function App() {
     if (!filters.includes(filter_by) && filter_by !== '') {
       setFilter([...filters, filter_by]);
 
-      setListings(listings.filter(listing => [...listing.languages, ...listing.tools].includes(filter_by)));
+      setListings(listings.filter(listing => [
+        listing.role,
+        listing.level,
+        ...listing.languages,
+        ...listing.tools
+      ].includes(filter_by)));
     }
   }
 

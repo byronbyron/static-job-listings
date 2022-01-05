@@ -5,6 +5,8 @@ export default function Details({
   recent,
   featured,
   position,
+  role,
+  level,
   postedAt,
   contract,
   location,
@@ -40,7 +42,7 @@ export default function Details({
         </div>
       </div>
       <div className="tags">
-        { [...languages, ...tools].map(skill => <Skills skill={skill} key={skill} />) }
+        { [role, level, ...languages, ...tools].map(skill => <Skills skill={skill} key={skill} />) }
       </div>
     </>
   )

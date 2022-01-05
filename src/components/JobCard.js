@@ -12,6 +12,8 @@ export default function JobCard({listing, filtering}) {
         recent={listing.new}
         featured={listing.featured}
         position={listing.position}
+        role={listing.role}
+        level={listing.level}
         postedAt={listing.postedAt}
         contract={listing.contract}
         location={listing.location}
