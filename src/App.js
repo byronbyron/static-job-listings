@@ -35,9 +35,11 @@ export default function App() {
       <Header />
 
       <main className="container mx-auto px-6">
-        <div className="filter">
-          { filters.map(filter => <FilterItem item={filter} _callback={removeFilter} key={filter} />)}
-        </div>
+        {filters.length > 0 && (
+          <div className="filter">
+            {filters.map(filter => <FilterItem item={filter} _callback={removeFilter} key={filter} />)}
+          </div>
+        )}
 
         <div className="card-group">
           { listings.map( listing => <JobCard listing={listing} key={listing.id} filtering={filterListings} /> ) }

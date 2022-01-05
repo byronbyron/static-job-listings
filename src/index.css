@@ -24,6 +24,7 @@ body {
   height: 155px;
   background: url('../public/images/bg-header-mobile.svg') no-repeat center theme('colors.cyan');
   background-size: cover;
+  @apply mb-14;
 }
 
 .container {
@@ -32,10 +33,16 @@ body {
 }
 
 .filter {
-  @apply h-14;
   @apply flex;
+  @apply flex-wrap;
   @apply items-center;
-  @apply justify-center;
+  @apply mb-14;
+  @apply p-5;
+  @apply pb-1;
+  @apply bg-white;
+  @apply rounded;
+  margin-top: -92px;
+  box-shadow: 0 1rem 1rem -0.25rem hsl(180deg 29% 50% / 20%);
 }
 
 .card {
@@ -43,7 +50,7 @@ body {
   @apply mb-10;
   @apply px-6 pb-2 pt-8;
   @apply relative;
-  @apply rounded-lg;
+  @apply rounded;
   box-shadow: 0 1rem 1rem -0.25rem hsl(180deg 29% 50% / 20%);
 }
 
@@ -114,14 +121,11 @@ body {
   @apply leading-none;
   @apply rounded;
   @apply mb-4;
+  @apply mr-4;
   color: theme('colors.cyan');
   background-color: theme('colors.light-cyan-tags');
   padding: 11px 8px 8px 8px;
   transition: color 0.15s, background-color 0.15s;
-}
-
-.tag + .tag {
-  @apply ml-4;
 }
 
 .tag:hover,
@@ -133,6 +137,36 @@ body {
 .tags {
   @apply flex;
   @apply flex-wrap;
+}
+
+.filter-tag {
+  @apply rounded-tr-none rounded-br-none;
+  padding-right: 2.5rem;
+  position: relative;
+}
+
+.filter-tag:hover,
+.filter-tag:focus {
+  background-color: theme('colors.light-cyan-tags');
+  color: theme('colors.cyan');
+}
+
+.filter-tag::after {
+  content: '';
+  background: url('../public/images/icon-remove.svg') no-repeat center theme('colors.cyan');
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+  transition: background-color 0.15s;
+}
+
+.filter-tag:hover::after,
+.filter-tag:focus::after {
+  background-color: theme('colors.dark-cyan');
 }
 
 .bg-white {
@@ -196,5 +230,9 @@ body {
 
   .tag {
     @apply mt-4;
+  }
+
+  .filter-tag {
+    @apply mt-0;
   }
 }

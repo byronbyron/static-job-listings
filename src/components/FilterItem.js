@@ -6,7 +6,7 @@ export default function FilterItem({item, _callback}) {
   }
 
   return (
-    <button className="text-xs p-2 bg-white rounded cursor-pointer mr-2" onClick={() => removeFilter()}>
+    <button className="tag filter-tag" onClick={() => removeFilter()}>
       {item}
     </button>
   )
