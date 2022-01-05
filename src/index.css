@@ -1,3 +1,200 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: theme('colors.light-cyan');
+  font-family: 'Spartan', sans-serif;
+  font-size: 1rem;
+  min-width: 375px;
+}
+
+.header {
+  height: 155px;
+  background: url('../public/images/bg-header-mobile.svg') no-repeat center theme('colors.cyan');
+  background-size: cover;
+}
+
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.filter {
+  @apply h-14;
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+}
+
+.card {
+  @apply bg-white;
+  @apply mb-10;
+  @apply px-6 pb-2 pt-8;
+  @apply relative;
+  @apply rounded-lg;
+  box-shadow: 0 1rem 1rem -0.25rem hsl(180deg 29% 50% / 20%);
+}
+
+.card-featured::after {
+  content: '';
+  width: 5px;
+  @apply block;
+  @apply absolute;
+  @apply top-0 bottom-0 left-0;
+  @apply rounded-tl-lg rounded-bl-lg;
+  background-color: theme('colors.cyan');
+}
+
+.card-image {
+  @apply absolute;
+  @apply -top-6 left-6;
+}
+
+.card-image img {
+  @apply w-12 h-12;
+}
+
+.card-title {
+  @apply text-base;
+  @apply font-bold;
+  @apply mb-2;
+  color: theme('colors.dark-cyan');
+}
+
+.card-title a {
+  transition: color 0.15s;
+}
+
+.card-title a:hover,
+.card-title a:focus {
+  color: theme('colors.cyan'); 
+}
+
+.card-meta {
+  @apply mb-4;
+  @apply pb-4;
+  color: hsl(0, 0%, 58%);
+  border-bottom: 1px solid hsl(0, 0%, 75%);
+}
+
+.card-meta span {
+  font-size: 80%;
+}
+
+.card-meta span + span::before {
+  content: "\2022";
+  @apply ml-2 mr-2;
+}
+
+.tag-pill {
+  font-size: 11px;
+  @apply font-bold;
+  @apply uppercase;
+  @apply rounded-full;
+  @apply mr-2;
+  padding: 4px 8px 0;
+  color: theme('colors.white');
+}
+
+.tag {
+  font-size: 13px;
+  @apply font-bold;
+  @apply leading-none;
+  @apply rounded;
+  @apply mb-4;
+  color: theme('colors.cyan');
+  background-color: theme('colors.light-cyan-tags');
+  padding: 11px 8px 8px 8px;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.tag + .tag {
+  @apply ml-4;
+}
+
+.tag:hover,
+.tag:focus {
+  color: theme('colors.light-cyan-tags');
+  background-color: theme('colors.cyan');
+}
+
+.tags {
+  @apply flex;
+  @apply flex-wrap;
+}
+
+.bg-white {
+  background-color: theme('colors.white');
+}
+
+@media (min-width: 1024px) {
+  .header {
+    background-image: url('../public/images/bg-header-desktop.svg');
+  }
+
+  .filter {
+    height: 76px;
+  }
+
+  .card-group {
+    margin-bottom: 120px;
+  }
+
+  .card {
+    @apply flex;
+    @apply items-center;
+    @apply mb-6;
+    @apply py-8 px-10;
+  }
+
+  .card-image {
+    @apply static;
+    @apply mr-6;
+  }
+
+  .card-image img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .card-meta {
+    @apply text-lg;
+    @apply leading-none;
+    @apply mb-0 pb-0;
+    @apply border-b-0;
+  }
+
+  .card-meta span + span::before {
+    @apply mx-4;
+  }
+
+  .card-body {
+    @apply mr-6;
+  }
+
+  .card-title {
+    @apply text-lg;
+    @apply mb-2;
+  }
+
+  .tags {
+    @apply items-center;
+    @apply ml-auto;
+  }
+
+  .tag {
+    @apply mt-4;
+  }
+}
