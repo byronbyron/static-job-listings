@@ -31,7 +31,7 @@ export default function Details({
           { featured ? <span className="tag-pill bg-dark-cyan">Featured</span> : null }
         </p>
         <h2 className="card-title">
-          <a href="#">{position}</a>
+          <a href="/">{position}</a>
         </h2>
         <div className="card-meta">
           <span>{postedAt}</span>
